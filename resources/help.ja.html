@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeepSeek Harness Web Integration ヘルプ</title>
+  <style>
+    body {
+      font-family: var(--vscode-font-family);
+      font-size: var(--vscode-font-size);
+      color: var(--vscode-foreground);
+      background-color: var(--vscode-editor-background);
+      padding: 20px;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: var(--vscode-editor-foreground);
+      border-bottom: 1px solid var(--vscode-panel-border);
+      padding-bottom: 10px;
+    }
+
+    h2 {
+      color: var(--vscode-editor-foreground);
+      margin-top: 30px;
+    }
+
+    h3 {
+      color: var(--vscode-textLink-foreground);
+    }
+
+    .section {
+      margin-bottom: 30px;
+      padding: 20px;
+      background-color: var(--vscode-editor-background);
+      border-radius: 8px;
+      border: 1px solid var(--vscode-panel-border);
+    }
+
+    code {
+      background-color: var(--vscode-textCodeBlock-background);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: var(--vscode-editor-font-family);
+    }
+
+    pre {
+      background-color: var(--vscode-textCodeBlock-background);
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      border-left: 3px solid var(--vscode-textLink-foreground);
+    }
+
+    pre code {
+      background-color: transparent;
+      padding: 0;
+    }
+
+    a {
+      color: var(--vscode-textLink-foreground);
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .warning {
+      background-color: var(--vscode-editorInfo-background);
+      border-left: 4px solid var(--vscode-editorInfo-foreground);
+      padding: 15px;
+      margin: 20px 0;
+    }
+
+    ul,
+    ol {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>DeepSeek Harness Web Integration ヘルプ</h1>
+
+  <div class="section">
+    <h2>DeepSeek Harness Web Integration とは？</h2>
+    <p><strong>DeepSeek Harness Web Integration</strong> は、<strong>DeepSeek Harness (DSH)</strong> AI コーディングアシスタントを VSCode に統合する拡張機能です。</p>
+    <ul>
+      <li><strong>DeepSeek Harness (DSH)</strong>（<code>@deepseek-ai/dsh</code>）— Web サービスを提供する AI コーディングアシスタント CLI ツール。</li>
+      <li><strong>DeepSeek Harness Web Integration</strong>（この拡張機能）— DSH の Web インターフェースを VSCode サイドバーに埋め込みます。</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>動作環境</h2>
+    <p>DSH は Node.js ランタイムに依存します。起動前に、拡張機能は Node.js 環境を自動的にチェックします：</p>
+    <ul>
+      <li><strong>Node.js >= 22.19.0</strong> が必要です。次のコマンドでバージョンを確認できます：</li>
+    </ul>
+    <pre><code>node --version</code></pre>
+    <p>Node.js がインストールされていない、またはバージョンが古い場合、起動時に拡張機能が明確なエラーメッセージを表示します。Node.js をインストールまたはアップグレードした後、VSCode を再起動してください。</p>
+    <p><strong>ヒント：</strong><code>dsh</code> コマンドがグローバルにインストールされていない場合、拡張機能は <code>npx -y @deepseek-ai/dsh web</code> による起動に自動的にフォールバックします。初回実行時はパッケージのダウンロードが必要なため、時間がかかる場合があります。また、<code>dsh-web.preferNpx</code> 設定を有効にすると、常に npx での起動を優先します（この場合、起動に失敗しても <code>dsh</code> コマンドにはフォールバックしません）。</p>
+  </div>
+
+  <div class="section">
+    <h2>DSH インストールガイド</h2>
+    <p>グローバルインストールは任意です（推奨、起動が高速になります）。npm で DSH CLI ツールをグローバルインストール：</p>
+    <pre><code>npm install -g @deepseek-ai/dsh</code></pre>
+    <p>インストールの確認：</p>
+    <pre><code>dsh --version</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>使用ガイド</h2>
+
+    <h3>DSH の起動</h3>
+    <ol>
+      <li>VSCode サイドバーの DSH-Web パネルを開く</li>
+      <li>「DSH を起動」ボタンをクリック</li>
+      <li>サービスの起動完了を待つ</li>
+      <li>利用開始</li>
+    </ol>
+
+    <h3>外部 DSH プロセスへの接続</h3>
+    <p>ターミナル等で既に DSH サービスを起動している場合、新たにプロセスを起動せず直接接続できます。</p>
+    <ol>
+      <li>VSCode 設定を開く（<code>Ctrl+,</code> / <code>Cmd+,</code>）</li>
+      <li><code>dsh-web.port</code> を検索し、外部プロセスが使用するポート番号に変更</li>
+      <li>サイドバーの DSH-Web パネルを再度開く</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h2>FAQ</h2>
+
+    <h3>Q: DSH が起動できない？</h3>
+    <p>A: ポート 3080 が使用されていないか確認するか、設定でポート番号を変更してください。</p>
+
+    <h3>Q: 接続がタイムアウトする場合は？</h3>
+    <p>A: トップバーの「プロセスを再起動」ボタンをクリックしてください。</p>
+
+    <h3>Q: DSH をインストール済みだが「DSH がインストールされていません」と表示される？</h3>
+    <p>A: インストール状態のキャッシュが原因の可能性があります：</p>
+    <ol>
+      <li>サイドバー上部の<strong>接続を更新</strong>ボタンをクリック</li>
+      <li>VSCode を再起動（<code>Ctrl+Shift+P</code> → "Reload Window"）</li>
+      <li>インストール確認：ターミナルで <code>dsh --version</code> を実行</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h2>テクニカルサポート</h2>
+    <p>問題が発生した場合：</p>
+    <ol>
+      <li>ヘルプドキュメントと FAQ を確認</li>
+      <li>GitHub で既存の Issue を検索</li>
+      <li>新しい Issue を作成して問題を報告</li>
+    </ol>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeepSeek Harness Web Integration Help</title>
+  <style>
+    body {
+      font-family: var(--vscode-font-family);
+      font-size: var(--vscode-font-size);
+      color: var(--vscode-foreground);
+      background-color: var(--vscode-editor-background);
+      padding: 20px;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: var(--vscode-editor-foreground);
+      border-bottom: 1px solid var(--vscode-panel-border);
+      padding-bottom: 10px;
+    }
+
+    h2 {
+      color: var(--vscode-editor-foreground);
+      margin-top: 30px;
+    }
+
+    h3 {
+      color: var(--vscode-textLink-foreground);
+    }
+
+    .section {
+      margin-bottom: 30px;
+      padding: 20px;
+      background-color: var(--vscode-editor-background);
+      border-radius: 8px;
+      border: 1px solid var(--vscode-panel-border);
+    }
+
+    code {
+      background-color: var(--vscode-textCodeBlock-background);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: var(--vscode-editor-font-family);
+    }
+
+    pre {
+      background-color: var(--vscode-textCodeBlock-background);
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      border-left: 3px solid var(--vscode-textLink-foreground);
+    }
+
+    pre code {
+      background-color: transparent;
+      padding: 0;
+    }
+
+    a {
+      color: var(--vscode-textLink-foreground);
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .warning {
+      background-color: var(--vscode-editorInfo-background);
+      border-left: 4px solid var(--vscode-editorInfo-foreground);
+      padding: 15px;
+      margin: 20px 0;
+    }
+
+    ul,
+    ol {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>DeepSeek Harness Web Integration Help</h1>
+
+  <div class="section">
+    <h2>What is DeepSeek Harness Web Integration?</h2>
+    <p><strong>DeepSeek Harness Web Integration</strong> is a VSCode extension that integrates the <strong>DeepSeek Harness (DSH)</strong> AI coding assistant into VSCode.</p>
+    <p>It is not a standalone AI tool, but rather a VSCode frontend for <strong>DSH</strong>. The relationship between the two is as follows:</p>
+    <ul>
+      <li><strong>DeepSeek Harness (DSH)</strong> (<code>@deepseek-ai/dsh</code>) — An AI coding assistant CLI tool that provides a web service, handling the actual AI conversations and code processing.</li>
+      <li><strong>DeepSeek Harness Web Integration</strong> (this extension) — Embeds DSH's web interface into the VSCode sidebar, allowing you to use all of DSH's features without leaving your editor.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Environment Requirements</h2>
+    <p>DSH relies on the Node.js runtime. Before starting, the extension checks your Node.js environment:</p>
+    <ul>
+      <li><strong>Node.js >= 22.19.0</strong> is required. Verify your version with:</li>
+    </ul>
+    <pre><code>node --version</code></pre>
+    <p>If Node.js is missing or the version is too old, the extension will show an error message when starting. Please install or upgrade Node.js, then restart VSCode.</p>
+    <p><strong>Tip:</strong> If the <code>dsh</code> command is not installed globally, the extension automatically falls back to starting DSH via <code>npx -y @deepseek-ai/dsh web</code>. The first run may need to download the package, which can take a while. You can also enable the <code>dsh-web.preferNpx</code> setting to always prefer the npx startup method (in that case, no fallback to the <code>dsh</code> command on failure).</p>
+  </div>
+
+  <div class="section">
+    <h2>DSH Installation Guide</h2>
+    <p>Global installation is optional (recommended for faster startup). Install the DSH CLI tool globally via npm:</p>
+    <pre><code>npm install -g @deepseek-ai/dsh</code></pre>
+    <p>Verify installation:</p>
+    <pre><code>dsh --version</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>Usage Guide</h2>
+
+    <h3>Launch DSH</h3>
+    <ol>
+      <li>Open the DSH-Web panel in the VSCode sidebar</li>
+      <li>Click the "Start DSH" button</li>
+      <li>Wait for the service to start</li>
+      <li>Start using it</li>
+    </ol>
+
+    <h3>Connect to an External DSH Process</h3>
+    <p>If you have already started a DSH service in a terminal or elsewhere, the extension can connect directly to it without starting a new process.</p>
+    <ol>
+      <li>Open VSCode Settings (<code>Ctrl+,</code> / <code>Cmd+,</code>)</li>
+      <li>Search for <code>dsh-web.port</code> and change the port number to match the one used by the external process</li>
+      <li>Reopen the DSH-Web panel in the sidebar</li>
+    </ol>
+    <p>When the extension detects a DSH process already running on the configured port, it will display a prompt: <strong>"External DSH Process Running"</strong>. Click <strong>"Connect to Process"</strong> to load the web interface directly.</p>
+  </div>
+
+  <div class="section">
+    <h2>FAQ</h2>
+
+    <h3>Q: DSH cannot start?</h3>
+    <p>A: Please check if port 3080 is occupied, or try modifying the port number in the configuration.</p>
+
+    <h3>Q: What to do if connection times out?</h3>
+    <p>A: Try clicking the "Restart Process" button in the top bar, which will kill the DSH process and restart it.</p>
+
+    <h3>Q: DSH is installed, but still shows "DSH Not Installed"?</h3>
+    <p>A: This may be due to installation status caching. Please try:</p>
+    <ol>
+      <li>Click the <strong>Refresh Connection</strong> button at the top of the sidebar</li>
+      <li>If that doesn't work, restart VSCode (<code>Ctrl+Shift+P</code> → "Reload Window")</li>
+      <li>Verify installation: run <code>dsh --version</code> in terminal</li>
+    </ol>
+
+    <h3>Q: DSH Web interface colors don't match VSCode theme?</h3>
+    <p>A: DSH Web currently cannot automatically adapt to VSCode themes. You need to manually adjust the color mode in the DSH web interface settings.</p>
+  </div>
+
+  <div class="section">
+    <h2>Technical Support</h2>
+    <p>If you encounter issues, please:</p>
+    <ol>
+      <li>Check the help documentation and FAQ</li>
+      <li>Search for existing issues on GitHub</li>
+      <li>Create a new Issue describing your problem</li>
+    </ol>
+  </div>
+</body>
+
+</html>

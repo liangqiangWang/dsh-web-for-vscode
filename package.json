@@ -1,0 +1,294 @@
+{
+  "name": "dsh-integration",
+  "displayName": "DeepSeek Harness Web",
+  "description": "VSCode extension for DeepSeek Harness (dsh), unofficial",
+  "version": "0.1.0",
+  "publisher": "hudi",
+  "icon": "resources/icons/dsh.png",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liangqiangWang/dsh-web-for-vscode"
+  },
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./dist/extension.js",
+  "localizations": [
+    {
+      "languageId": "zh-cn",
+      "languageName": "简体中文",
+      "translations": [
+        {
+          "id": "dsh-integration",
+          "path": "./package.nls.zh-cn.json"
+        }
+      ]
+    },
+    {
+      "languageId": "ja",
+      "languageName": "日本語",
+      "translations": [
+        {
+          "id": "dsh-integration",
+          "path": "./package.nls.ja.json"
+        }
+      ]
+    },
+    {
+      "languageId": "ko",
+      "languageName": "한국어",
+      "translations": [
+        {
+          "id": "dsh-integration",
+          "path": "./package.nls.ko.json"
+        }
+      ]
+    }
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "dsh-container",
+          "title": "DeepSeek-Harness",
+          "icon": "resources/icons/dsh.svg"
+        }
+      ]
+    },
+    "views": {
+      "dsh-container": [
+        {
+          "id": "dshWebview",
+          "name": "DSH",
+          "type": "webview",
+          "icon": "resources/icons/dsh.svg",
+          "themeIcon": {
+            "light": "resources/icons/dsh-light.svg",
+            "dark": "resources/icons/dsh-dark.svg"
+          }
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "dsh-web.openInBrowser",
+        "title": "%command.openInBrowser.title%",
+        "icon": "$(globe)"
+      },
+      {
+        "command": "dsh-web.toggleSidebar",
+        "title": "%command.toggleSidebar.title%",
+        "icon": "$(screen-full)"
+      },
+      {
+        "command": "dsh-web.killProcess",
+        "title": "%command.killProcess.title%",
+        "icon": "$(x)"
+      },
+      {
+        "command": "dsh-web.restartProcess",
+        "title": "%command.restartProcess.title%",
+        "icon": "$(debug-restart)"
+      },
+      {
+        "command": "dsh-web.refreshWebview",
+        "title": "%command.refreshWebview.title%",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "dsh-web.showHelp",
+        "title": "%command.showHelp.title%",
+        "icon": "$(question)"
+      },
+      {
+        "command": "dsh-web.reportIssue",
+        "title": "%command.reportIssue.title%",
+        "icon": "$(feedback)"
+      },
+      {
+        "command": "dsh-web.changeLanguage",
+        "title": "%command.changeLanguage.title%",
+        "icon": "$(globe)"
+      },
+      {
+        "command": "dsh-web.openSettings",
+        "title": "%command.openSettings.title%",
+        "icon": "$(settings-gear)"
+      },
+      {
+        "command": "dsh-web.debugStatus",
+        "title": "%command.debugStatus.title%",
+        "icon": "$(bug)"
+      },
+      {
+        "command": "dsh-web.debugLanguage",
+        "title": "%command.debugLanguage.title%",
+        "icon": "$(symbol-text)"
+      },
+      {
+        "command": "dsh-web.forceReady",
+        "title": "%command.forceReady.title%",
+        "icon": "$(check)"
+      },
+      {
+        "command": "dsh-web.debugProcessHealth",
+        "title": "%command.debugProcessHealth.title%",
+        "icon": "$(pulse)"
+      },
+      {
+        "command": "dsh-web.killAllProcesses",
+        "title": "%command.killAllProcesses.title%",
+        "icon": "$(trash)"
+      }
+    ],
+    "submenus": [
+      {
+        "id": "dsh-web.moreMenu",
+        "label": "%submenu.moreMenu.label%",
+        "icon": "$(ellipsis)"
+      },
+      {
+        "id": "dsh-web.processManagementMenu",
+        "label": "%submenu.processManagementMenu.label%"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "dsh-web.refreshWebview",
+          "when": "view == dshWebview",
+          "group": "navigation@1"
+        },
+        {
+          "command": "dsh-web.toggleSidebar",
+          "when": "view == dshWebview",
+          "group": "navigation@2"
+        },
+        {
+          "submenu": "dsh-web.moreMenu",
+          "when": "view == dshWebview",
+          "group": "navigation@3"
+        }
+      ],
+      "dsh-web.moreMenu": [
+        {
+          "command": "dsh-web.openInBrowser",
+          "group": "1_actions@1"
+        },
+        {
+          "command": "dsh-web.changeLanguage",
+          "group": "1_actions@3"
+        },
+        {
+          "command": "dsh-web.openSettings",
+          "group": "1_actions@4"
+        },
+        {
+          "submenu": "dsh-web.processManagementMenu",
+          "group": "2_process@1"
+        },
+        {
+          "command": "dsh-web.showHelp",
+          "group": "3_help@1"
+        },
+        {
+          "command": "dsh-web.reportIssue",
+          "group": "3_help@2"
+        }
+      ],
+      "dsh-web.processManagementMenu": [
+        {
+          "command": "dsh-web.restartProcess",
+          "group": "1_restart@1"
+        },
+        {
+          "command": "dsh-web.killProcess",
+          "group": "1_restart@2"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "%configuration.title%",
+      "properties": {
+        "dsh-web.port": {
+          "type": "number",
+          "default": 3080,
+          "description": "%config.port.description%"
+        },
+        "dsh-web.timeout": {
+          "type": "number",
+          "default": 5000,
+          "description": "%config.timeout.description%"
+        },
+        "dsh-web.language": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "zh-cn",
+            "en",
+            "ja",
+            "ko"
+          ],
+          "enumDescriptions": [
+            "%config.language.auto.description%",
+            "%config.language.zh-cn.description%",
+            "%config.language.en.description%",
+            "%config.language.ja.description%",
+            "%config.language.ko.description%"
+          ],
+          "default": "auto",
+          "description": "%config.language.description%"
+        },
+        "dsh-web.killOnExit": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.killOnExit.description%"
+        },
+        "dsh-web.terminalStartupDelay": {
+          "type": "number",
+          "default": 0,
+          "description": "%config.terminalStartupDelay.description%"
+        },
+        "dsh-web.preferNpx": {
+          "type": "boolean",
+          "default": false,
+          "description": "%config.preferNpx.description%"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "test-compile": "tsc -p ./",
+    "test-watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "compile:test": "tsc -p ./tsconfig.test.json",
+    "test": "npm run compile:test && node --test \"out/test/test/**/*.test.js\""
+  },
+  "devDependencies": {
+    "@types/node": "14.x",
+    "@types/vscode": "^1.64.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "eslint": "^7.27.0",
+    "ts-loader": "^9.2.2",
+    "typescript": "^4.3.2",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0"
+  },
+  "dependencies": {
+    "@vscode/l10n": "^0.0.18",
+    "node-fetch": "^3.3.2"
+  }
+}
