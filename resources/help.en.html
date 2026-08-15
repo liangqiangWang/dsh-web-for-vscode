@@ -143,6 +143,16 @@
   <div class="section">
     <h2>FAQ</h2>
 
+    <h3>Q: Cannot paste into the DSH interface (e.g. when entering the API key for the first time)?</h3>
+    <p>A: This is a known VSCode issue (<a href="https://github.com/microsoft/vscode/issues/129178">microsoft/vscode#129178</a>), not a bug in this extension. The DSH web interface is embedded as a nested iframe inside VSCode. On macOS, keyboard shortcuts such as <code>Cmd+V</code> sometimes do not reach inputs inside the iframe, so pasting works intermittently and may recover after a refresh.</p>
+    <p>If pasting does not work, try the following in order:</p>
+    <ol>
+      <li>Click the DSH input once to make sure it has focus, then press <code>Cmd+V</code></li>
+      <li>Use the menu bar <strong>Edit → Paste</strong>, or <strong>right-click → Paste</strong> inside the DSH input</li>
+      <li>Click the <strong>Open in Editor</strong> button in the toolbar at the top of the DSH sidebar panel (next to the refresh button), then retry pasting in the editor area</li>
+      <li>Choose <strong>Open in Browser</strong> from the <strong>...</strong> menu (or visit <code>http://localhost:3080</code> directly), enter the API key in the browser, then come back to VSCode</li>
+    </ol>
+
     <h3>Q: DSH cannot start?</h3>
     <p>A: Please check if port 3080 is occupied, or try modifying the port number in the configuration.</p>
 

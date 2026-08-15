@@ -141,6 +141,16 @@
   <div class="section">
     <h2>FAQ</h2>
 
+    <h3>Q: DSH 인터페이스에 붙여넣기가 안 됨 (처음 API Key 입력 시 등)?</h3>
+    <p>A: 이것은 VSCode의 알려진 문제(<a href="https://github.com/microsoft/vscode/issues/129178">microsoft/vscode#129178</a>)이며, 본 확장 프로그램의 버그가 아닙니다. DSH 웹 인터페이스는 VSCode 내에 중첩 iframe으로 삽입되어 있어, macOS에서는 <code>Cmd+V</code> 등의 단축키가 iframe 내부의 입력란에 전달되지 않는 경우가 있습니다. 붙여넣기가 간헐적으로 작동하고 새로고침 후 복구될 수 있습니다.</p>
+    <p>붙여넣기가 작동하지 않으면 다음 방법을 순서대로 시도해 보세요:</p>
+    <ol>
+      <li>DSH 입력란을 한 번 클릭해 포커스를 맞춘 후 <code>Cmd+V</code> 누르기</li>
+      <li>메뉴 막대의 <strong>Edit → Paste</strong> 사용, 또는 DSH 입력란에서 <strong>우클릭 → 붙여넣기</strong></li>
+      <li>DSH 사이드바 패널 상단 도구 모음의 <strong>에디터에서 열기</strong> 버튼(새로 고침 버튼 옆)을 클릭한 후 에디터 영역에서 붙여넣기 재시도</li>
+      <li><strong>...</strong> 메뉴의 <strong>브라우저에서 열기</strong> 선택(또는 <code>http://localhost:3080</code> 직접 접속) 후 브라우저에서 API Key 등을 입력하고 VSCode로 돌아오기</li>
+    </ol>
+
     <h3>Q: DSH가 시작되지 않음?</h3>
     <p>A: 포트 3080이 사용 중인지 확인하거나 설정에서 포트 번호를 변경해 보세요.</p>
 
