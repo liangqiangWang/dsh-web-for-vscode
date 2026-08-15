@@ -8,7 +8,7 @@
 
 一款可以在侧边栏使用 DeepSeek Harness (DSH) Web 功能的 VSCode 扩展。
 
-![主视图](screenshot/main_web_view.png)
+![主视图](https://raw.githubusercontent.com/liangqiangWang/dsh-web-for-vscode/master/screenshot/main_web_view.png)
 
 ## 特性
 
@@ -24,19 +24,19 @@
 
 点击"启动 DSH"按钮，直接从侧边栏启动 DSH：
 
-![启动视图](screenshot/start_view.png)
+![启动视图](https://raw.githubusercontent.com/liangqiangWang/dsh-web-for-vscode/master/screenshot/start_view.png)
 
 ### 侧边栏视图
 
 在 VSCode 侧边栏中直接使用 DSH：
 
-![侧边栏视图](screenshot/side_view.png)
+![侧边栏视图](https://raw.githubusercontent.com/liangqiangWang/dsh-web-for-vscode/master/screenshot/side_view.png)
 
 ### 工具栏菜单
 
 通过面板工具栏刷新连接、在编辑器/浏览器中打开、查看帮助及管理 DSH 进程：
 
-![菜单视图](screenshot/menu_view.png)
+![菜单视图](https://raw.githubusercontent.com/liangqiangWang/dsh-web-for-vscode/master/screenshot/menu_view.png)
 
 ## 安装
 

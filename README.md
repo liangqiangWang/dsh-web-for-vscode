@@ -8,7 +8,7 @@
 
 A VSCode extension that integrates DeepSeek Harness (DSH) Web functionality into the sidebar.
 
-![Main View](screenshot/main_web_view.png)
+![Main View](https://raw.githubusercontent.com/liangqiangWang/dsh-web-for-vscode/master/screenshot/main_web_view.png)
 
 ## Features
 
@@ -24,19 +24,19 @@ A VSCode extension that integrates DeepSeek Harness (DSH) Web functionality into
 
 Click the "Start DSH" button to launch DSH directly from the sidebar:
 
-![Start View](screenshot/start_view.png)
+![Start View](https://raw.githubusercontent.com/liangqiangWang/dsh-web-for-vscode/master/screenshot/start_view.png)
 
 ### Sidebar View
 
 Use DSH directly in the VSCode sidebar:
 
-![Sidebar View](screenshot/side_view.png)
+![Sidebar View](https://raw.githubusercontent.com/liangqiangWang/dsh-web-for-vscode/master/screenshot/side_view.png)
 
 ### Toolbar Menu
 
 Refresh, open in editor/browser, view help, and manage the DSH process from the panel toolbar:
 
-![Menu View](screenshot/en_us/menu_view.png)
+![Menu View](https://raw.githubusercontent.com/liangqiangWang/dsh-web-for-vscode/master/screenshot/en_us/menu_view.png)
 
 ## Installation
 
